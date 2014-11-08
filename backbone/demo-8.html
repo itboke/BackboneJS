@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./js/jquery.js'></script>
+	<script src='./js/underscore.js'></script>
+	<script src='./js/backbone.js'></script>
+</head>
+
+<body>
+	
+
+
+	<script type="text/javascript">
+
+			/*
+				客户端和服务端通信的时候
+				如何是客户端通知服务端是新建数据则是采用POST方法
+				如果是更新数据则是采用 PUT方法
+			*/
+
+			//创建一个数据模型
+
+			var student = Backbone.Model.extend({
+
+					
+
+					//初始化函数
+					initialize:function(){
+
+					},
+
+					//设置数据模型的默认值
+					defaults:{
+						name:"BackboneJs",
+						phone:"10001"
+					},
+
+					//客户端和服务器通信
+					url:"./service/demo-7.php"
+				
+
+			});
+
+			var s1 = new student();
+			//s1.set({"name":"AngularJS"});
+
+			//save()方法是向服务器发送数据
+			s1.save({
+				name:"AngularJS",
+				phone:'1111111111111'
+			},{success:function(model,response){
+				console.log(response);
+			},wait:true});
+
+			console.log(s1.toJSON());
+			
+
+	</script>
+</body>
+</html>

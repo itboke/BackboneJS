@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./js/jquery.js'></script>
+	<script src='./js/underscore.js'></script>
+	<script src='./js/backbone.js'></script>
+</head>
+
+<body>
+	
+
+
+	<script type="text/javascript">
+
+			/*
+				客户端和服务端通信的时候
+				如何是客户端通知服务端是新建数据则是采用POST方法
+				
+				删除服务器上的数据例子
+			*/
+
+			//创建一个数据模型
+
+			var student = Backbone.Model.extend({
+
+					
+
+					//初始化函数
+					initialize:function(){
+
+						this.on("destroy",function(){
+							console.log("已经开始删除事件");
+						})
+
+					},
+
+					//设置一个要删除的ID属性
+					idAttribute:"code",
+					
+					//客户端和服务器通信
+					url:"./service/destroy.php"
+					
+
+			});
+
+			var s1 = new student({"code":10010});
+			
+			//使用destroy方法向服务器拿数据
+
+			s1.destroy({
+				success:function(model,response){
+					//console.log(response.code); //响应标志
+					if (response.code == "0") {
+						console.log("已经删除code为:"+s1.get("code")+"的数据")
+					};
+				},
+				error:function(err){
+					console.log(err);
+				},
+				wait:true
+			});
+			
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./js/underscore.js'></script>
+	<script src='./js/backbone.js'></script>
+
+</head>
+
+<body>
+	
+
+
+	<script type="text/javascript">
+
+			//创建一个数据模型
+
+			var student = Backbone.Model.extend({
+
+				//初始化函数
+				initialize:function(){
+
+					num++;
+					console.log(num);
+				},	
+
+				//设置数据模型的默认值
+				defaults:{
+					name:"",
+					phone:""
+				},//逗号千万不要忘记了
+
+				//自定义数据模型的方法
+
+				getName:function(){
+
+					console.log('你的名字是:' + this.get('name'));	
+
+				}
+
+			});
+
+			var num = 0;
+			var s1 = new student();
+			//模型对象赋值的方法
+			s1.set({name:"黄泽淋",phone:"13751877760"});
+
+			var s2 = new student();	
+
+			//获取模型对象的属性值方法get(attrName)或者escape(attrName)
+
+			s1.getName();
+
+			console.log(s1.get("phone"));
+	</script>
+</body>
+</html>

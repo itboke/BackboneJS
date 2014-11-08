@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./js/underscore.js'></script>
+	<script src='./js/backbone.js'></script>
+
+</head>
+
+<body>
+	
+
+
+	<script type="text/javascript">
+
+			//创建一个数据模型
+
+			var student = Backbone.Model.extend({
+
+					//初始化函数
+					initialize:function(){
+
+					},
+
+
+					//设置数据模型的默认值
+					defaults:{
+						name:"BackboneJs",
+						phone:"10001"
+					}
+				
+
+			});
+
+			var s1 = new student();
+			
+			//删除数据模型中的数据:删除数据的方法是unset(attrName)和clear()
+			s1.unset("name");//清除制定属性的属性值
+
+			console.log(s1.toJSON());
+
+			s1.clear();//清除所有的数据，没有参数
+
+			console.log(s1.toJSON());
+	</script>
+</body>
+</html>

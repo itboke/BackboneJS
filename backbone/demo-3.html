@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./js/underscore.js'></script>
+	<script src='./js/backbone.js'></script>
+
+</head>
+
+<body>
+	
+
+
+	<script type="text/javascript">
+
+			//创建一个数据模型
+
+			var student = Backbone.Model.extend({
+
+					//初始化函数
+					initialize:function(){
+
+						//BackboneJs  开始数据验证中的绑定数据验证失败触发的事件					
+						this.on("invalid",function(model,error){
+
+								console.log(error);
+
+						})
+					},
+
+					//添加validate方法,该方法是确认数据校验的标准
+					validate:function(attrs){
+
+						if(!_.isString(attrs.name)){
+
+							return "名字必须是字符串";
+
+						}
+
+					},
+
+					//设置数据模型的默认值
+					defaults:{
+						name:"BackboneJs",
+						phone:""
+					}
+				
+
+			});
+
+			var s1 = new student();
+			//模型对象赋值的方法 。设置属性validate值为true是代表开始数据验证
+			s1.set({name:"AngularJS",phone:"13751877760"},{"validate":true});
+
+			console.log(s1.toJSON());  //这个数据验证是正确的;
+
+			s1.set({name:1111},{"validate":true})
+			
+			console.log(s1.toJSON());  //这个数据验证是错误的;
+
+	</script>
+</body>
+</html>

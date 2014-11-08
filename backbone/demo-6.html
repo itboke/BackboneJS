@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./js/underscore.js'></script>
+	<script src='./js/backbone.js'></script>
+
+</head>
+
+<body>
+	
+
+
+	<script type="text/javascript">
+
+			//创建一个数据模型
+
+			var student = Backbone.Model.extend({
+
+					//初始化函数
+					initialize:function(){
+
+					},
+
+
+					//设置数据模型的默认值
+					defaults:{
+						name:"BackboneJs",
+						phone:"10001"
+					}
+				
+
+			});
+
+			var s1 = new student();
+			
+			s1.set({
+				"name":"AngularJS",
+				"phone":"13090000"
+			});
+			//模型对象的attributes属性对象,包含该模型对象的所有属性
+			console.log(s1.attributes);
+
+			//模型对象的previous(attrName)和previousAttributes()方法,在使用set()方法后使用;
+
+			//previous(attrName) 获取前一状态指定的属性值
+
+			console.log(s1.previous("name"));
+
+			//previousAttributes() 获取前一状态全部的属性集合对象
+
+			console.log(s1.previousAttributes());
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./js/underscore.js'></script>
+	<script src='./js/backbone.js'></script>
+
+</head>
+
+<body>
+	
+
+
+	<script type="text/javascript">
+
+			//创建一个数据模型
+
+			var student = Backbone.Model.extend({
+
+				//初始化函数
+				initialize:function(){
+
+					//添加一个监听模型对象的属性值变化的事件 
+					this.on("change:name",function(){
+
+						//获取旧的属性值
+						var oldName = this.previous("name");
+
+						//获取新的属性值
+						var newName = this.get("name");
+
+
+						console.log("新的值是:"+newName+"======"+"旧的值是:"+oldName);
+					})	
+
+				},	
+
+				//设置数据模型的默认值
+				defaults:{
+					name:"BackboneJs",
+					phone:""
+				}
+				
+
+			});
+
+			var s1 = new student();
+			//模型对象赋值的方法
+			s1.set({name:"AngularJS",phone:"13751877760"});
+			
+	</script>
+</body>
+</html>
