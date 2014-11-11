@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./js/jquery.js'></script>
+	<script src='./js/underscore.js'></script>
+	<script src='./js/backbone.js'></script>
+</head>
+
+<body>
+	
+
+
+	<script type="text/javascript">
+
+			//创建一个视图类:核心功能是处理数据业务逻辑,关联DOM元素,渲染数据等
+			var mirro = Backbone.View.extend({
+
+				//构建类的代码
+
+				//设置一个元素的id属性
+				id:'demo',
+				//设置元素的类名属性
+				className:'view-1',
+				//视图的重载渲染函数
+				render:function(content){
+
+					//el指定了当前的DOM元素	
+					this.el.innerHTML = content;
+
+					//向页面中插入元素对象
+					document.body.appendChild(this.el);	
+				}	
+
+			});
+			//实例化一个视图实例
+			var demo = new mirro();
+			demo.render("backboneJS是一把美丽的杀猪刀!")	
+
+	</script>
+</body>
+</html>
