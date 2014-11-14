@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./js/jquery.js'></script>
+	<script src='./js/underscore.js'></script>
+	<script src='./js/backbone.js'></script>
+</head>
+
+<body>
+	
+
+	<p id='text'></p>	
+	<script type="text/javascript">
+
+			//通过视图对象访问模型对象
+
+
+			//创建一个数据模型
+
+			var person = Backbone.Model.extend({
+
+				defaults:{
+					name:"",
+					sex:""
+				}
+					
+			});
+
+			//实例化数据模型对象
+			var hzl = new person({
+				name:"backbone",
+				sex:"language"
+			})
+
+			//创建一个视图类
+			var print = Backbone.View.extend({
+
+				//el属性值指定DOM元素(根据选择器规则)
+				el:'#text', //id为text的DOM元素
+		
+				//视图的重载渲染函数
+				render:function(){
+
+					//el指定了当前的DOM元素	
+					this.el.innerHTML = JSON.stringify(this.model);
+
+				}	
+
+			});
+
+			//实例化一个视图实例并访问数据对象的数据
+			var demo = new print({model:hzl});
+
+			demo.render()	
+
+	</script>
+</body>
+</html>
