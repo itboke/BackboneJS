@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./dep.js"></script>
+    <script src="./observer.js"></script>
+    <script src="./watcher.js"></script>
+    <script src="./compile.js"></script>
+    <script src="./simpleMvvm.js"></script>
+</head>
+
+<body>
+	<div id="body">{{name}}<br/>{{age}}<br/><button v-on:click="click">click</button></div>
+	<script>
+	 new Simplemvvm({
+	    	el: "#body",
+	           data:{
+	           	name: 'hello',
+	           	age: 22
+	           },
+	           methods:{
+	           	click: function(){
+	           		this._data.name = 'world';
+	           	}
+	           }
+	 });
+	 </script>
+</body>
+
+</html>
